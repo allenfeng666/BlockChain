@@ -38,7 +38,7 @@ export const MarketProvider = ({ children }) => {
     data: assetsData,
     error: assetsDataError,
     isLoading: assetsDataIsLoading,
-  } = useMoralisQuery('Assets')
+  } = useMoralisQuery('assets')
 
   useEffect(async () => {
     console.log(assetsData)
