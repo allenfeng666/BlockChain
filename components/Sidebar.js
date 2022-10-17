@@ -1,13 +1,13 @@
-import React, { useContext } from 'react'
-import Image from 'next/image'
-import { FaBox } from 'react-icons/fa'
-import { BsFillBookmarkFill } from 'react-icons/bs'
-import { BsFillPersonFill } from 'react-icons/bs'
-import { MarketContext } from '../context/MarketContext'
-import { ConnectButton } from 'web3uikit'
-import { AiOutlineHistory } from 'react-icons/ai'
-import Link from 'next/link'
-import logo from '../assets/logo.png'
+import React, { useContext } from "react";
+import Image from "next/image";
+import { FaBox } from "react-icons/fa";
+import { BsFillBookmarkFill } from "react-icons/bs";
+import { BsFillPersonFill } from "react-icons/bs";
+import { MarketContext } from "../context/MarketContext";
+import { ConnectButton } from "web3uikit";
+import { AiOutlineHistory } from "react-icons/ai";
+import Link from "next/link";
+import logo from "../assets/logo.png";
 
 const Sidebar = () => {
   const styles = {
@@ -25,7 +25,7 @@ const Sidebar = () => {
     username: `flex items-center w-full justify-center`,
     setNickname: `text-lg font-bold flex flex-1 items-center mt-[20px] mb-[20px] text-white`,
     connectButton: `text-lg font-bold flex flex`,
-  }
+  };
 
   const {
     isAuthenticated,
@@ -35,8 +35,7 @@ const Sidebar = () => {
     setNickname,
     username,
     handleSetUsername,
-  } = useContext(MarketContext)
-
+  } = useContext(MarketContext);
 
   return (
     <div className={styles.container}>
@@ -46,7 +45,7 @@ const Sidebar = () => {
             <div className={styles.profilePicContainer}>
               <Image
                 src={`https://avatars.dicebear.com/api/pixel-art/${username}.svg`}
-                alt='profile'
+                alt="profile"
                 className={styles.profilePic}
                 height={100}
                 width={100}
@@ -56,11 +55,11 @@ const Sidebar = () => {
               <>
                 <div className={styles.username}>
                   <input
-                    type='text'
-                    placeholder='Username....'
+                    type="text"
+                    placeholder="Username...."
                     className={styles.usernameInput}
                     value={nickname}
-                    onChange={e => setNickname(e.target.value)}
+                    onChange={(e) => setNickname(e.target.value)}
                   />
                 </div>
                 <button
@@ -82,39 +81,33 @@ const Sidebar = () => {
         </div>
       </div>
       <div className={styles.menu}>
-        <Link href='/'>
+        <Link href="/">
           <div className={styles.menuItem}>
-            <Image
-              src={logo}
-              height={30}
-              width={30}
-              className={styles.Logo}
-            />
-            My Market
-            <br /> Board
+            <Image src={logo} height={30} width={30} className={styles.Logo} />
+            Market
           </div>
         </Link>
-        <div className={styles.menuItem}>
-          <FaBox />
-          Collections
-        </div>
-        <div className={styles.menuItem}>
-          <BsFillBookmarkFill />
-          Saved
-        </div>
-        <div className={styles.menuItem}>
-          <BsFillPersonFill />
-          Profile
-        </div>
-        <Link href='/history'>
+        <Link href="/history">
           <div className={styles.menuItem}>
             <AiOutlineHistory />
             Transaction History
           </div>
         </Link>
+        <div className={styles.menuItem}>
+          <FaBox />
+          Todo: Collections
+        </div>
+        {/* <div className={styles.menuItem}>
+          <BsFillBookmarkFill />
+          Saved
+        </div> */}
+        <div className={styles.menuItem}>
+          <BsFillPersonFill />
+          Todo: Profile
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

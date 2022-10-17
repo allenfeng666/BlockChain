@@ -1,18 +1,18 @@
-import React, { useContext } from 'react'
-import { CgMenuGridO } from 'react-icons/cg'
-// import logo from '../assets/amazon_logo_full.png'
-import Image from 'next/image'
-import { IoMdSearch } from 'react-icons/io'
-import { MarketContext } from '../context/MarketContext'
-import { FaCoins } from 'react-icons/fa'
+import React, { useContext } from "react";
+import { CgMenuGridO } from "react-icons/cg";
+// import logo from '../assets/logo_full.png'
+import Image from "next/image";
+import { IoMdSearch } from "react-icons/io";
+import { MarketContext } from "../context/MarketContext";
+import { FaCoins } from "react-icons/fa";
 import {
   ModalProvider,
   Modal,
   useModal,
   ModalTransition,
-} from 'react-simple-hook-modal'
-import 'react-simple-hook-modal/dist/styles.css'
-// import BuyModal from './BuyModal'
+} from "react-simple-hook-modal";
+import "react-simple-hook-modal/dist/styles.css";
+import BuyModal from "./BuyModal";
 
 const Header = () => {
   const styles = {
@@ -23,17 +23,17 @@ const Header = () => {
     menu: `flex items-center gap-6`,
     menuItem: `flex items-center text-md font-bold cursor-pointer`,
     coins: `ml-[10px]`,
-  }
+  };
 
-  const { balance, buyTokens, getBalance } = useContext(MarketContext)
-  const { openModal, isModalOpen, closeModal } = useModal()
+  const { balance, buyTokens, getBalance } = useContext(MarketContext);
+  const { openModal, isModalOpen, closeModal } = useModal();
   return (
     <ModalProvider>
       <div className={styles.container}>
         <div className={styles.logo}>
           {/* <Image
             src={logo}
-            alt='amazon'
+            alt='logo'
             height={100}
             width={150}
             className='object-cover'
@@ -41,24 +41,22 @@ const Header = () => {
         </div>
         <div className={styles.search}>
           <input
-            type='text'
-            placeholder='Search Your Assets...'
+            type="text"
+            placeholder="Search Your Assets..."
             className={styles.searchInput}
           />
           <IoMdSearch fontSize={20} />
         </div>
         <div className={styles.menu}>
           <div className={styles.menuItem}>New Releases</div>
-          <div className={styles.menuItem}>Featured</div>
           {balance ? (
             <div
               className={(styles.balance, styles.menuItem)}
               onClick={openModal}
             >
-              {balance}
-              <FaCoins className={styles.coins} />
+              {balance} ALC
               <Modal isOpen={isModalOpen} transition={ModalTransition.SCALE}>
-                {/* <BuyModal close={closeModal} buyTokens={buyTokens} /> */}
+                <BuyModal close={closeModal} buyTokens={buyTokens} />
               </Modal>
             </div>
           ) : (
@@ -66,9 +64,9 @@ const Header = () => {
               className={(styles.balance, styles.menuItem)}
               onClick={openModal}
             >
-              0 AC <FaCoins className={styles.coins} />
+              0 ALC
               <Modal isOpen={isModalOpen} transition={ModalTransition.SCALE}>
-                {/* <BuyModal close={closeModal} buyTokens={buyTokens} /> */}
+                <BuyModal close={closeModal} buyTokens={buyTokens} />
               </Modal>
             </div>
           )}
@@ -76,7 +74,7 @@ const Header = () => {
         </div>
       </div>
     </ModalProvider>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
