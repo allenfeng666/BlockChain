@@ -6,7 +6,7 @@ import { MarketContext } from "../context/MarketContext";
 import { ConnectButton } from "web3uikit";
 import { AiOutlineHistory } from "react-icons/ai";
 import Link from "next/link";
-import logo from "../assets/logo.png";
+import logo from "../public/logo.png";
 
 const Sidebar = () => {
   const styles = {
