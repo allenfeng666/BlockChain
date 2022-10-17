@@ -41,7 +41,6 @@ export const MarketProvider = ({ children }) => {
   } = useMoralisQuery("assets");
 
   useEffect(async () => {
-    console.log(assetsData);
     await enableWeb3();
     await getAssets();
     await getOwnedAssets();
@@ -91,8 +90,6 @@ export const MarketProvider = ({ children }) => {
     const amount = ethers.BigNumber.from(tokenAmount);
     const price = ethers.BigNumber.from("100000000000000");
     const calcPrice = amount.mul(price);
-
-    console.log("AllenCoin Address: " + allenCoinAddress);
 
     let options = {
       contractAddress: allenCoinAddress,
@@ -151,9 +148,6 @@ export const MarketProvider = ({ children }) => {
   const buyAsset = async (price, asset) => {
     try {
       if (!isAuthenticated) return;
-      console.log("price: ", price);
-      console.log("asset: ", asset.name);
-      console.log(userData);
 
       const options = {
         type: "erc20",
@@ -169,7 +163,7 @@ export const MarketProvider = ({ children }) => {
         const res = userData[0].add("ownedAsset", {
           ...asset,
           purchaseDate: Date.now(),
-          etherscanLink: `https://rinkeby.etherscan.io/tx/${receipt.transactionHash}`,
+          etherscanLink: `https://goerli.etherscan.io/tx/${receipt.transactionHash}`,
         });
 
         await res.save().then(() => {
@@ -197,8 +191,6 @@ export const MarketProvider = ({ children }) => {
     let query = new Moralis.Query("EthTransactions");
     let subscription = await query.subscribe();
     subscription.on("update", async (object) => {
-      console.log("New Transactions");
-      console.log(object);
       setRecentTransactions([object]);
     });
   };

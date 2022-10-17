@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import Image from "next/image";
 import { FaBox } from "react-icons/fa";
-import { BsFillBookmarkFill } from "react-icons/bs";
 import { BsFillPersonFill } from "react-icons/bs";
 import { MarketContext } from "../context/MarketContext";
 import { ConnectButton } from "web3uikit";
