@@ -5,7 +5,7 @@ import { MarketContext } from "../context/MarketContext";
 
 import Transaction from "../components/Transaction";
 
-const history = () => {
+const History = () => {
   const styles = {
     container: `h-full w-full flex bg-[#fff]`,
     main: `w-full h-full flex flex-col mt-[50px]`,
@@ -38,4 +38,4 @@ const history = () => {
   );
 };
 
-export default history;
+export default History;
